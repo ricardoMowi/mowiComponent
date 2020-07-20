@@ -3,15 +3,6 @@
     <label :class="_styles.label" >{{_label}} <span v-if="_isRequired == true" > *</span> :</label>
     <div :class="_styles.container">
 
-      <!-- <select class="form-control" :value="value"  v-validate="'required'">
-        <option value="test0">Todos</option>
-        <option
-          v-for="(select,index) in _content"
-          :key="index"
-          v-on:input="returnData" 
-          :value="select.value"          
-        >{{select.label}}</option>
-      </select> -->
         <treeselect     
           v-model="valueTest"
           v-on:input="returnData" 
@@ -19,8 +10,8 @@
           :multiple="true"
           :options="arrayOptions" />
       </div>
-    </div>
   </div>
+ 
 </template>
 
 <script>

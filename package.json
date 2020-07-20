@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/ricardoMowi/mowiComponent/issues"
   },
-  "homepage": "https://github.com/ricardoMowi/mowiComponent#readme"
+  "homepage": "https://github.com/ricardoMowi/mowiComponent#readme",
+  "dependencies": {
+    "@riophae/vue-treeselect": "^0.4.0",
+    "vuejs-datepicker": "^1.6.2"
+  }
 }
