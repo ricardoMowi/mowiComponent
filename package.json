@@ -1,6 +1,6 @@
 {
   "name": "test_mowi_component",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "componente nuevo",
   "main": "index.js",
   "scripts": {
@@ -21,6 +21,8 @@
   "homepage": "https://github.com/ricardoMowi/mowiComponent#readme",
   "dependencies": {
     "@riophae/vue-treeselect": "^0.4.0",
+    "lodash": "^4.17.19",
+    "moment": "^2.27.0",
     "vuejs-datepicker": "^1.6.2"
   }
 }

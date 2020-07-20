@@ -94,7 +94,7 @@
 </template>
 
 <script>
-    import LoadingComponent from "./../components/loadingComponent.vue";
+    
     import _ from 'lodash';
      const Value = ({ props }) => {
       return <div>{props.data}</div>
