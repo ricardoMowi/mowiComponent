@@ -31,7 +31,7 @@
 </template>
 <script>
 
-import consultServices from './utilities/consultServices.js';
+
 import masterAdministrator from "./masterAdministratorContainer.vue";
 import TableMaf from "./tableMaf.vue";
 import Treeselect from '@riophae/vue-treeselect';
