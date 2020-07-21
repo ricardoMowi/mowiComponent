@@ -22,7 +22,7 @@ import searchComponent from "./searchComponentContainer.vue";
 import moment from "moment";
 const Value = ({ props }) => {
   //buton filter
-  return <div>{props.data}</div>;
+  //return <div>{props.data}</div>;
 };
 export default {
   name: "masterAdministrator",
