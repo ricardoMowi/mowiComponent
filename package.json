@@ -1,6 +1,6 @@
 {
   "name": "test_mowi_component",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "componente nuevo",
   "main": "masterTemplateContainer.vue",
   "scripts": {
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/ricardoMowi/mowiComponent#readme",
   "dependencies": {
+    "@babel/preset-react": "^7.10.4",
     "@riophae/vue-treeselect": "^0.4.0",
     "lodash": "^4.17.19",
     "moment": "^2.27.0",
