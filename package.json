@@ -1,6 +1,6 @@
 {
   "name": "test_mowi_component",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "componente nuevo",
   "main":  "index.js",
   "scripts": {
