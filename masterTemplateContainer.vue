@@ -22,7 +22,7 @@
     </div>
     <!-- </div> -->
 
-    <div class="card-header-actions">
+    <div v-if="flagUploadDta == true" class="card-header-actions">
       <button type="button"  data-toggle="modal" data-target=".bs-example-modal-test"   class="btn btn-success btn-xs">Subir data</button> 
     </div>    
     <TableMaf :header="header" :data="data" :tableTitle="tableTitle" ref="tableMaf" :useMassiveSelector="useMassiveSelector" ></TableMaf>
@@ -51,12 +51,14 @@
   </div>
 </template>
 <script>
+
 //import consultServices from './../../utilities/consultServices.js';
 import LoadingComponent from "./loadingComponentContainer.vue";
 import MasterAdministrator from "./masterAdministratorContainer.vue";
 import TableMaf from "../tableMaf.vue";
 import Treeselect from '@riophae/vue-treeselect';
 import vueStep from 'vue-step';
+
 export default {
   name: "masterTemplate",
   components: {
@@ -66,6 +68,7 @@ export default {
     LoadingComponent,
     vueStep,
   },
+
   props:{
     filters:Array,
     header:Array,
@@ -75,8 +78,10 @@ export default {
     setDataTable:Function,
     dataLoadFunction:Function,
     useMassiveSelector:Boolean,
+    flagUploadDta:Boolean,
     headingTitle:String
   },
+
   data: () => ({
       //declarar variable que se va utilizar
       valueConsistsOf: 'ALL_WITH_INDETERMINATE',
@@ -89,12 +94,16 @@ export default {
       flagShow:true
     
   }),
+
+
+
   created () {
     this.arrayOptions = this.tranforForSelectTree(this.filters) 
     this.headingTitle? this.headingTitleFinal = this.headingTitle : this.headingTitleFinal = 'Búsqueda'
     
   },
   methods: {
+
     test(){
       if(this.flagShow == true){document.getElementById('thediv').style.display = 'none';}
       //if(this.flagShow == false){document.getElementById('thediv').style.display = 'block'; this.flagShow=true}      
@@ -127,6 +136,7 @@ export default {
           this.filters[i].selectField = false
        }        
       }
+
     },
     /**
      * El método runSearch() permite darle el formato necesario a los filtros
@@ -168,6 +178,7 @@ export default {
         if(startSearch == true){
             //consultar servicio
             arrayData =await this.dataLoadFunction(selectedFilters)
+
             //dar el formato a los datos
             finalArray=this.setDataTable(arrayData)
             
@@ -180,6 +191,7 @@ export default {
         }
         this.isLoading = false;
     },
+
     async setInitialData(data){
        this.$refs.tableMaf.formatData(this.setDataTable(data));
     },
@@ -187,4 +199,10 @@ export default {
 };
 </script>
 <style scoped>
+.collapsing {
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+  transition: height 0.2s ease;
+}
+
 </style>
