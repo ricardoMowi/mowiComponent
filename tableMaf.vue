@@ -1,7 +1,7 @@
 <template>
     <!--<div class="row">Content-->
         <div class="card">
-            <div class="card-header" v-if="titleView != false">
+            <div class="card-header" style="padding-left: 15px;" v-if="titleView != false">
                 <h2>{{tableTitle}}</h2>
                 <div class="clearfix"></div>
             </div>
@@ -12,11 +12,12 @@
                     <div class="row" v-if="datePerPageView != false">
                         <div class="col-md-12">
                             <div class="form-group form-inline pull-left VueTables__search">
-                                <label> Datos:
+                                <label style="padding-left: 7px;"> Datos : </label>
+                                <div style="padding-left: 15px;">
                                     <select class="form-control" v-model="datePerPage">
                                         <option v-for="value in valPage" :value="value"  >{{value}}</option>
-                                    </select>
-                                    </label>
+                                    </select>     
+                                </div>                                  
                             </div>
                         </div>
                         <div v-if="textView == true" class="col-md-12">
@@ -94,14 +95,12 @@
 </template>
 
 <script>
-    
+    import LoadingComponent from "./../components/loadingComponent.vue";
     import _ from 'lodash';
      const Value = ({ props }) => {
       return <div>{props.data}</div>
     }
-
     export default {
-
         props: ['header','data','tableTitle','searchOption','text','callbackData','title','datePerPageV','pagination','useMassiveSelector'],
          components: {
           Value,
@@ -122,7 +121,6 @@
           paginationView:true,
           useMassiveSelectorFlag:false,
           massiveSelect:false
-
         }),
          created () {
              if(this.useMassiveSelector){this.useMassiveSelectorFlag=this.useMassiveSelector}
@@ -141,7 +139,6 @@
              if(this.searchOption == false){this.filterView=false}
              if(this.text != ''){this.textView=true}
              
-
         },
         methods: {
             check_(e){
@@ -162,7 +159,6 @@
                         return object;
                 });
             },
-
            formatData(data){
                 var ctx = this;
                 if(this.useMassiveSelector == true){
@@ -173,16 +169,13 @@
                     }
                    
                 }
-
                 this.dataTable=[];
                 this.dataTable = _.map(data, (item, i)=>{
                     item.indexTableMaf = i;
                     return item;
                 });
-
             },
             orderByAsc(camp){
-
                 var dataValue = _.toUpper(this.dataTable[1][camp]);
                  if (dataValue=='[OBJECT OBJECT]')
                 {
@@ -205,11 +198,9 @@
                 {
                     this.dataTable =  _.orderBy(this.dataTable,[camp],['desc']);
                 }
-
             },
             massiveSeletor(){    
                 console.log('mira prueba ', this.massiveSelect)
-
                 for (let index = 0; index < this.dataTable.length; index++) {
                     console.log('lo que está adentro', this.dataTable[index].isSelected)
                     this.massiveSelect == true?   this.dataTable[index].isSelected = false : this.dataTable[index].isSelected = true                     
@@ -221,13 +212,9 @@
                console.log('entró a changeMassiveSelect',valor) 
                this.massiveSelect == true? this.massiveSelect = false:null
             }
-
-
         },
         computed:{
-
             filtered () {
-
                 var filteredData=this.dataTable;
                 this.filSearch.forEach(element => {
                     filteredData = element.value ?
@@ -247,8 +234,6 @@
                         return _.includes(dataValue,filterValue)
                     }) : filteredData ;
                 })
-
-
                 if (this.$refs.paginator)
                 {
                     if(this.$refs.paginator.currentPage < 0 && filteredData.length >= 1 )
@@ -256,13 +241,9 @@
                         this.$refs.paginator.currentPage = 0 ;
                     }
                 }
-
-
                 return filteredData;
             },
-
         }
-
     }
 </script>
 
@@ -276,7 +257,6 @@ ul.paginate-links.dataTable li.disabled a {
     cursor: not-allowed;
     justify-content: center!important;
 }
-
 ul.paginate-links.dataTable li a {
     text-decoration: none;
     display: inline;
@@ -287,20 +267,16 @@ ul.paginate-links.dataTable li a {
     font-weight: normal;
     font-size: inherit;
     cursor:pointer;
-
 }
-
 ul.paginate-links>li:first-child>a{
     margin-left: 0;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
 }
-
 ul.paginate-links>li:last-child>a{
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
 }
-
 ul.paginate-links>.active>a, ul.paginate-links>.active>a:focus, ul.paginate-links>.active>a:hover{
     z-index: 3;
     color: #fff;
@@ -317,15 +293,10 @@ ul.paginate-links>.active>a, ul.paginate-links>.active>a:focus, ul.paginate-link
       font-weight: normal;
       font-size: inherit;
   }
-
-
   ul.paginate-links.dataTable {padding-top: 10px;}
-
   .scrolling-wrapper {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
-
 }
-
 </style>
